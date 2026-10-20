@@ -1,0 +1,467 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f8f7f4">
+  <title>YOUR BRAND | Everyday Streetwear</title>
+  <meta name="description" content="Discover everyday hoodies and modern streetwear made for your style.">
+
+  <style>
+    :root {
+      --bg: #f8f7f4;
+      --ink: #191919;
+      --muted: #77766f;
+      --line: #e7e4de;
+      --accent: #d9f36a;
+      --white: #fff;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    button, select { font: inherit; }
+    a { color: inherit; text-decoration: none; }
+
+    .announcement {
+      padding: 10px;
+      background: var(--ink);
+      color: white;
+      text-align: center;
+      font-size: 11px;
+      letter-spacing: 1.5px;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 22px 7%;
+      border-bottom: 1px solid var(--line);
+      gap: 20px;
+    }
+    .logo {
+      font-size: 24px;
+      font-weight: 900;
+      letter-spacing: -1.5px;
+    }
+    nav { display: flex; gap: 26px; font-size: 13px; }
+    nav a:hover { opacity: .6; }
+    .bag {
+      border: 1px solid var(--ink);
+      background: transparent;
+      border-radius: 30px;
+      padding: 10px 15px;
+      white-space: nowrap;
+      font-size: 12px;
+    }
+
+    .hero {
+      padding: 64px 7% 70px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 45px;
+    }
+    .eyebrow {
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: bold;
+    }
+    h1 {
+      font-size: clamp(48px, 7.2vw, 88px);
+      line-height: .98;
+      letter-spacing: -5px;
+      margin: 22px 0;
+    }
+    h1 span { color: #88877f; }
+    .hero p {
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.8;
+      max-width: 390px;
+    }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 22px;
+      padding: 16px 24px;
+      background: var(--ink);
+      color: white;
+      border: 1px solid var(--ink);
+      border-radius: 3px;
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: bold;
+      letter-spacing: .7px;
+      transition: .2s;
+    }
+    .button:hover { background: #41413c; }
+    .hero-art {
+      position: relative;
+      min-height: 410px;
+      background: #e9e6df;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .hero-art img {
+      width: 100%;
+      height: 450px;
+      object-fit: cover;
+      display: block;
+    }
+    .art-label {
+      position: absolute;
+      left: 18px;
+      bottom: 18px;
+      background: white;
+      padding: 12px 15px;
+      font-size: 11px;
+      letter-spacing: 1px;
+    }
+
+    .benefits {
+      margin: 0 7%;
+      padding: 22px 0;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      gap: 15px;
+      text-align: center;
+      font-size: 11px;
+      letter-spacing: .7px;
+    }
+
+    .shop { padding: 75px 7%; }
+    .section-top {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+    h2 {
+      margin: 10px 0 0;
+      font-size: clamp(32px, 4vw, 48px);
+      letter-spacing: -2px;
+    }
+    .section-top p { color: var(--muted); font-size: 13px; }
+    .products {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
+    }
+    .product-image {
+      background: #eeece7;
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 4 / 5;
+    }
+    .product-image img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      transition: transform .35s;
+    }
+    .product:hover .product-image img { transform: scale(1.04); }
+    .tag {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: white;
+      padding: 7px 9px;
+      font-size: 9px;
+      letter-spacing: 1px;
+    }
+    .product-info {
+      padding: 15px 0;
+      display: grid;
+      gap: 10px;
+    }
+    .product-title {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      font-size: 14px;
+      font-weight: bold;
+    }
+    .product-subtitle { color: var(--muted); font-size: 11px; }
+    .product-controls {
+      display: flex;
+      gap: 8px;
+    }
+    .product-controls select {
+      min-width: 0;
+      flex: 1;
+      padding: 12px 8px;
+      background: transparent;
+      border: 1px solid #d5d1c8;
+      border-radius: 2px;
+      font-size: 12px;
+    }
+    .add {
+      padding: 12px 13px;
+      border: 0;
+      background: var(--accent);
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 11px;
+    }
+    .add:hover { background: #c6e24f; }
+
+    .story {
+      margin: 0 7% 75px;
+      padding: 48px;
+      background: #e9e6df;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+    }
+    .story h2 { font-size: clamp(30px, 4vw, 46px); }
+    .story p {
+      max-width: 420px;
+      color: #66645e;
+      line-height: 1.8;
+      font-size: 13px;
+    }
+
+    footer {
+      padding: 32px 7%;
+      background: var(--ink);
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+      font-size: 11px;
+    }
+    footer p { color: #bdbdb6; }
+
+    #notice {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--ink);
+      color: white;
+      padding: 14px 20px;
+      font-size: 13px;
+      z-index: 10;
+      width: max-content;
+      max-width: 90%;
+      display: none;
+    }
+
+    @media (max-width: 700px) {
+      header { padding: 18px 5%; flex-wrap: wrap; }
+      nav { order: 3; width: 100%; justify-content: space-between; gap: 10px; }
+      .hero { padding: 45px 5%; grid-template-columns: 1fr; gap: 30px; }
+      h1 { letter-spacing: -3px; }
+      .hero-art, .hero-art img { min-height: 0; height: 350px; }
+      .benefits { margin: 0 5%; font-size: 9px; }
+      .shop { padding: 55px 5%; }
+      .products { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px 12px; }
+      .product-title { flex-wrap: wrap; font-size: 12px; }
+      .product-controls { flex-direction: column; }
+      .add { min-height: 40px; }
+      .story { margin: 0 5% 50px; padding: 28px; flex-direction: column; align-items: start; }
+    }
+  </style>
+</head>
+<body>
+  <div class="announcement">EVERYDAY STREETWEAR · MADE FOR YOUR STYLE</div>
+
+  <header>
+    <a class="logo" href="#home">YOUR BRAND<span>.</span></a>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#shop">Shop</a>
+      <a href="#story">Our Story</a>
+    </nav>
+    <button class="bag" onclick="showBag()">Bag (<span id="bag-count">0</span>)</button>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div>
+        <div class="eyebrow">The everyday collection · 001</div>
+        <h1>Wear your<br><span>own thing.</span></h1>
+        <p>
+          Everyday essentials. Clean designs. Comfortable fits.
+          Discover hoodies that feel like you.
+        </p>
+        <a class="button" href="#shop">EXPLORE THE COLLECTION ↗</a>
+      </div>
+      <div class="hero-art">
+        <img
+          src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=1000&q=85"
+          alt="Casual hoodie fashion"
+          onerror="this.style.display='none'">
+        <div class="art-label">YOUR STYLE. YOUR RULES.</div>
+      </div>
+    </section>
+
+    <section class="benefits">
+      <div>✳ COMFORT FIRST</div>
+      <div>✳ DESIGNS THAT STAND OUT</div>
+      <div>✳ MADE FOR EVERYDAY</div>
+    </section>
+
+    <section class="shop" id="shop">
+      <div class="section-top">
+        <div>
+          <div class="eyebrow">Find your fit</div>
+          <h2>The hoodie edit.</h2>
+        </div>
+        <p>Collection 001 / 003</p>
+      </div>
+
+      <div class="products">
+        <article class="product">
+          <div class="product-image">
+            <img src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=700&q=80" alt="Everyday black hoodie" loading="lazy">
+            <span class="tag">EVERYDAY ESSENTIAL</span>
+          </div>
+          <div class="product-info">
+            <div class="product-title"><span>Core Hoodie</span><span>₹749</span></div>
+            <div class="product-subtitle">Black · Design CW-01</div>
+            <div class="product-controls">
+              <select id="size-1" aria-label="Choose size for Core Hoodie">
+                <option value="">Choose size</option>
+                <option>XS</option><option>S</option><option>M</option>
+                <option>L</option><option>XL</option><option>XXL</option>
+              </select>
+              <button class="add" onclick="addToBag('Core Hoodie','CW-01',749,'size-1')">ADD +</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product">
+          <div class="product-image">
+            <img src="https://images.unsplash.com/photo-1578681994506-b8f463449011?auto=format&fit=crop&w=700&q=80" alt="Relaxed fit casual clothing" loading="lazy">
+            <span class="tag">RELAXED FIT</span>
+          </div>
+          <div class="product-info">
+            <div class="product-title"><span>Relaxed Hoodie</span><span>₹749</span></div>
+            <div class="product-subtitle">Everyday fit · Design CW-02</div>
+            <div class="product-controls">
+              <select id="size-2" aria-label="Choose size for Relaxed Hoodie">
+                <option value="">Choose size</option>
+                <option>XS</option><option>S</option><option>M</option>
+                <option>L</option><option>XL</option><option>XXL</option>
+              </select>
+              <button class="add" onclick="addToBag('Relaxed Hoodie','CW-02',749,'size-2')">ADD +</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product">
+          <div class="product-image">
+            <img src="https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&fit=crop&w=700&q=80" alt="Modern streetwear clothing" loading="lazy">
+            <span class="tag">GRAPHIC SERIES</span>
+          </div>
+          <div class="product-info">
+            <div class="product-title"><span>Graphic Hoodie</span><span>₹749</span></div>
+            <div class="product-subtitle">Statement style · Design CW-03</div>
+            <div class="product-controls">
+              <select id="size-3" aria-label="Choose size for Graphic Hoodie">
+                <option value="">Choose size</option>
+                <option>XS</option><option>S</option><option>M</option>
+                <option>L</option><option>XL</option><option>XXL</option>
+              </select>
+              <button class="add" onclick="addToBag('Graphic Hoodie','CW-03',749,'size-3')">ADD +</button>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="story" id="story">
+      <div>
+        <div class="eyebrow">A little about us</div>
+        <h2>Less ordinary.<br>More you.</h2>
+      </div>
+      <div>
+        <p>
+          We're building a clothing brand around everyday comfort
+          and personal style. From simple essentials to expressive
+          graphics, find pieces that fit your world.
+        </p>
+        <a class="button" href="#shop">FIND YOUR HOODIE ↗</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div>
+      <strong class="logo">YOUR BRAND.</strong>
+      <p>Everyday clothing. Your kind of style.</p>
+    </div>
+    <p>© <span id="year"></span> YOUR BRAND. All rights reserved.</p>
+  </footer>
+
+  <div id="notice" role="status" aria-live="polite"></div>
+
+  <script>
+    const bag = [];
+    let noticeTimer;
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    function notify(message) {
+      const notice = document.getElementById('notice');
+      notice.textContent = message;
+      notice.style.display = 'block';
+      clearTimeout(noticeTimer);
+      noticeTimer = setTimeout(() => notice.style.display = 'none', 3000);
+    }
+
+    function addToBag(name, code, price, sizeId) {
+      const size = document.getElementById(sizeId).value;
+
+      if (!size) {
+        notify('Please choose your hoodie size first.');
+        document.getElementById(sizeId).focus();
+        return;
+      }
+
+      bag.push({ name, code, price, size });
+      document.getElementById('bag-count').textContent = bag.length;
+      notify(name + ' · Size ' + size + ' added to your bag.');
+    }
+
+    function showBag() {
+      if (bag.length === 0) {
+        notify('Your bag is empty. Explore the collection!');
+        return;
+      }
+
+      const summary = bag.map((item, index) =>
+        (index + 1) + '. ' + item.name + ' (' + item.code +
+        ') · Size ' + item.size + ' · ₹' + item.price
+      ).join('\n');
+
+      const total = bag.reduce((sum, item) => sum + item.price, 0);
+      const message = 'YOUR BAG\n\n' + summary +
+        '\n\nTotal: ₹' + total +
+        '\n\nThis is a demo bag. Checkout is not connected yet.';
+
+      alert(message);
+    }
+  </script>
+</body>
+</html>
